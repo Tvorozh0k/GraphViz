@@ -1,0 +1,15 @@
+﻿@model GraphViz.Models.Vertice
+
+<form asp-controller="Home" asp-action="AddVertice" asp-antiforgery="true" method="post">
+    <div class="input-group mb-3">
+        <input asp-for="name" type="text" class="form-control" placeholder="Название вершины">
+        <div class="col-12">
+            <span asp-validation-for="name" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Сохранить</button>
+        </div>
+    </div>
+</form>

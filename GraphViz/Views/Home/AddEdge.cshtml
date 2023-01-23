@@ -1,0 +1,19 @@
+﻿@model GraphViz.Models.Edge
+
+<form asp-controller="Home" asp-action="AddEdge" asp-antiforgery="true" method="post">
+    <div class="input-group mb-3">
+        <input asp-for="from" type="text" class="form-control" placeholder="Первая вершина">
+        <div class="col-12">
+            <span asp-validation-for="from" class="text-danger"></span>
+        </div>
+        <input asp-for="to" type="text" class="form-control" placeholder="Вторая вершина">
+        <div class="col-12">
+            <span asp-validation-for="to" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Сохранить</button>
+        </div>
+    </div>
+</form>

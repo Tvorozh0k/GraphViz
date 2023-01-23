@@ -1,0 +1,30 @@
+GRAPH directed unweighted
+VERTICES: 11
+1
+123
+2
+3
+4
+5
+6
+7
+8
+9
+abcde
+EDGES: 16
+1 123
+1 2
+123 1
+123 abcde
+2 3
+2 4
+3 1
+4 5
+5 2
+6 7
+6 8
+6 abcde
+7 9
+8 6
+9 8
+abcde 123

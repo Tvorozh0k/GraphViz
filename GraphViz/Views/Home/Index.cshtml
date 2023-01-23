@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <title>Interactive graph</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+</head>
+<body>
+    <div style="margin-top: 2%">
+        <h3> Сильные компоненты связности орграфа (алгоритм Косарайю) </h3>
+    </div>
+    
+    <div style="width: 100%; margin-top: 3%;">
+        <div style="width: 50%; height: 500px; float: left; border: thin solid black">
+            <div id="mynetwork" , style='width:500px;height:500px'></div>
+            <script type="module" src="~/js/site.js" charset="utf-8"></script>
+        </div>
+        <div style="margin-left: 55%; height: 500px;">
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+                <p class="font-weight-bold">Загрузить файл с данными орграфа</p>
+                <p style="color:red;font-weight:bold;">
+                    @ViewBag.Message
+                </p>
+                <input type="file" name="formFile" />
+                <input type="submit" value="Загрузить" />
+            }
+            <p> </p>
+            <p> @Html.ActionLink("Добавить вершину", "AddVertice", "Home", new { }, new { @class = "viewDialog", data_dialog_title = "Добавление вершины" })</p>
+            <p> @Html.ActionLink("Удалить вершину", "RemoveVertice", "Home", new { }, new { @class = "viewDialog", data_dialog_title = "Удаление вершины" })</p>
+            <p> @Html.ActionLink("Добавить дугу", "AddEdge", "Home", new { }, new { @class = "viewDialog", data_dialog_title = "Добавление дуги" })</p>
+            <p> @Html.ActionLink("Удалить дугу", "RemoveEdge", "Home", new { }, new { @class = "viewDialog", data_dialog_title = "Удаление дуги" })</p>
+        </div>
+    </div>
+</body>
+</html>
