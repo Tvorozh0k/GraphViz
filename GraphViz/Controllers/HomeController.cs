@@ -179,6 +179,44 @@ namespace GraphViz.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult GenerateGraph()
+        {
+            return PartialView("GenerateGraph");
+        }
+
+        [HttpPost]
+        public ActionResult GenerateGraph(RandomGraph par)
+        {
+            int N = par.N, p = par.p;
+
+            WorkGraph graph = new WorkGraph();
+
+            for (int i = 1; i <= N; ++i)
+                graph.AddVertice(i.ToString());
+
+            Random rnd = new Random();
+
+            for (int u = 1; u <= N; ++u)
+                for (int v = 1; v <= N; ++v)
+                    if (rnd.Next(0, 101) < p) graph.AddEdge(u.ToString(), v.ToString());
+
+            string fileCreatePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "dataCreate.txt");
+            string fileVizPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "dataViz.txt");
+
+            Algorithm algorithm = new Algorithm(graph);
+            algorithm.Print(fileVizPath);
+            graph.Print(fileCreatePath);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public IActionResult GetFile()
+        {
+            string fileCreatePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "dataCreate.txt");
+            return File(System.IO.File.OpenRead(fileCreatePath), "application/octet-stream", Path.GetFileName(fileCreatePath));
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

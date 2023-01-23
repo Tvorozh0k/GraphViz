@@ -1,0 +1,19 @@
+﻿@model GraphViz.Models.RandomGraph
+
+<form asp-controller="Home" asp-action="GenerateGraph" asp-antiforgery="true" method="post">
+    <div class="input-group mb-3">
+        <input asp-for="N" type="number" class="form-control" placeholder="Число вершин в орграфе">
+        <div class="col-12">
+            <span asp-validation-for="N" class="text-danger"></span>
+        </div>
+        <input asp-for="p" type="number" class="form-control" placeholder="Вероятность дуги (в процентах от 0 до 100)">
+        <div class="col-12">
+            <span asp-validation-for="p" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Сохранить</button>
+        </div>
+    </div>
+</form>

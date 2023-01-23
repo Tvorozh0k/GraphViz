@@ -31,10 +31,25 @@
                 <input type="submit" value="Загрузить" />
             }
             <p> </p>
-            <p> @Html.ActionLink("Добавить вершину", "AddVertice", "Home", new { }, new { @class = "viewDialog", data_dialog_title = "Добавление вершины" })</p>
-            <p> @Html.ActionLink("Удалить вершину", "RemoveVertice", "Home", new { }, new { @class = "viewDialog", data_dialog_title = "Удаление вершины" })</p>
-            <p> @Html.ActionLink("Добавить дугу", "AddEdge", "Home", new { }, new { @class = "viewDialog", data_dialog_title = "Добавление дуги" })</p>
-            <p> @Html.ActionLink("Удалить дугу", "RemoveEdge", "Home", new { }, new { @class = "viewDialog", data_dialog_title = "Удаление дуги" })</p>
+
+            <p class="font-weight-bold">Сгенерировать случайный орграф</p>
+            <input type="button" value="Генерация" onclick="location.href='@Url.Action("GenerateGraph", "Home")'" />
+
+            <p> </p>
+            <p class="font-weight-bold">Операции над орграфом</p>
+            <div style="width: 100%;">
+                <div style="width: 50%; height: 100px; float: left; ">
+                    <p> @Html.ActionLink("Добавить вершину", "AddVertice", "Home", new { }, new { @class = "viewDialog", data_dialog_title = "Добавление вершины" })</p>
+                    <p> @Html.ActionLink("Удалить вершину", "RemoveVertice", "Home", new { }, new { @class = "viewDialog", data_dialog_title = "Удаление вершины" })</p>
+                </div>
+                <div style="margin-left: 55%; height: 100px;">
+                    <p> @Html.ActionLink("Добавить дугу", "AddEdge", "Home", new { }, new { @class = "viewDialog", data_dialog_title = "Добавление дуги" })</p>
+                    <p> @Html.ActionLink("Удалить дугу", "RemoveEdge", "Home", new { }, new { @class = "viewDialog", data_dialog_title = "Удаление дуги" })</p>
+                </div>
+            </div>
+            
+            <p class="font-weight-bold">Скачать файл с данными орграфа</p>
+            <input type="button" value="Скачать" onclick="location.href='@Url.Action("GetFile", "Home")'" />
         </div>
     </div>
 </body>
